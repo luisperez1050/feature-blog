@@ -198,7 +198,8 @@ span.feature-icon {
 }
 
 main {
-	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom center;
 	color: #4a4a4a;
 	height: 84%;
 	padding: 20px;
@@ -245,14 +246,13 @@ article a {
 	position: absolute;
 	top: -20px;
 	left: -20px;
-	height: 43px;
+	min-height: 43px;
 	width: 42px;
 	text-align: center;
 }
 
 @media (max-width: 1200px) {
 	main {
-		height: unset;
 		grid-template-columns: 1fr !important;
 	}
 }
