@@ -62,31 +62,31 @@ export default {
 				{
 					title: 'Test Article 2',
 					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					link: '',
+					link: 'https://developer.mozilla.org/',
 					date: 'Jul 29'
 				},
 				{
 					title: 'Test Article 3',
 					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					link: '',
+					link: 'https://codesandbox.io/',
 					date: 'Jun 20'
 				},
 				{
 					title: 'Test Article 4',
 					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					link: '',
+					link: 'https://placeholder.com',
 					date: 'May 29'
 				},
 				{
 					title: 'Test Article 5',
 					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					link: '',
+					link: 'https://www.ebay.com',
 					date: 'Apr 20'
 				},
 				{
 					title: 'Test Article 6',
 					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-					link: '',
+					link: 'https://amazon.com',
 					date: 'Mar 29'
 				},
 			],
@@ -119,21 +119,25 @@ export default {
 			let articles = document.querySelectorAll('article');
 			
 			articles.forEach( article => {
-				let style = getComputedStyle(article);
-				let topMargin = parseInt(style.marginTop);
-				let calculatedHeight = Math.abs( article.clientHeight - topMargin);
-				if (calculatedHeight > maxHeight) {
-					maxHeight = calculatedHeight
+				article.style.minHeight = 'unset';
+
+				if (article.clientHeight > maxHeight) {
+					maxHeight = article.clientHeight
 				}
 			});
 			
 			articles.forEach( element => {
-				element.style.height = maxHeight + "px";
+				element.style.minHeight = maxHeight + "px";
 			});
 		}
 	},
 	mounted() {
-			this.articleHeight()
+		this.articleHeight()
+
+		window.addEventListener('resize', this.articleHeight)
+	},
+	unmounted() {
+		window.removeEventListener('resize', this.articleHeight)
 	}
 }
 
@@ -143,6 +147,8 @@ export default {
 <style scoped>
 .feature{
 	height: 97vh;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 header {
@@ -220,6 +226,7 @@ article {
 	margin-top: 50px;
 	padding: 20px;
 	position: relative;
+	box-sizing: border-box;
 }
 
 article a {
@@ -245,6 +252,7 @@ article a {
 
 @media (max-width: 1200px) {
 	main {
+		height: unset;
 		grid-template-columns: 1fr !important;
 	}
 }
