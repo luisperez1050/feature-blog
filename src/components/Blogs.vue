@@ -21,7 +21,7 @@
 			
 		</header>
 		<main :style="{ backgroundImage: `url(${pageProperties.backgroundImage})`, gridTemplateColumns: `repeat(${calculateGridColumn}, ${pageProperties.availableSpace}px)` }" >
-			<section v-for="article in items.slice(0,pageProperties.displayCount)" :key="article" >
+			<section v-for="article in items.slice(0,pageProperties.displayCount)" :key="article" :class="(`${calculateGridColumn}`) == '1' ? 'remove-centering' : ''">
 				<article :style="{ backgroundColor: pageProperties.itemBackgroundColor }">
 					<span class="date-icon">
 						{{ article.date }}
@@ -223,6 +223,12 @@ section:nth-child(odd):last-child {
 	grid-column: span 2;
 	padding: 0 250px;
 }
+
+section.remove-centering:nth-child(odd):last-child {
+	grid-column: span 2;
+	padding: 0 250px;
+}
+
 article {
 	margin-top: 50px;
 	padding: 20px;
