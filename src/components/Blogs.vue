@@ -201,12 +201,11 @@ main {
 	background-size: cover;
 	background-position: bottom center;
 	color: #4a4a4a;
-	min-height: 84%;
-	padding: 20px;
-	margin-top: 8px;
+	padding: 70px 25px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	display: grid;
-	grid-template-rows: 0.25fr;
-	grid-gap: 20px 50px;
+	grid-gap: 70px 50px;
 	justify-content: end;
 }
 
@@ -225,12 +224,11 @@ section:nth-child(odd):last-child {
 }
 
 section.remove-centering:nth-child(odd):last-child {
-	grid-column: span 2;
-	padding: 0 250px;
+	grid-column: unset;
+	padding: unset;
 }
 
 article {
-	margin-top: 50px;
 	padding: 20px;
 	position: relative;
 	box-sizing: border-box;
@@ -252,16 +250,14 @@ article a {
 	position: absolute;
 	top: -20px;
 	left: -20px;
-	min-height: 43px;
+	height: 43px;
 	width: 42px;
 	text-align: center;
 }
 
 @media (max-width: 1200px) {
 	main {
-		height: unset;
 		grid-template-columns: 1fr !important;
-		padding: 20px 30px;
 	}
 	section:nth-child(odd):last-child {
 		grid-column: unset;
