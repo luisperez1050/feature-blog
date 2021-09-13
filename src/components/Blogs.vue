@@ -198,10 +198,10 @@ span.feature-icon {
 }
 
 main {
-	background-repeat: no-repeat;
+	background-size: cover;
 	background-position: bottom center;
 	color: #4a4a4a;
-	height: 84%;
+	min-height: 84%;
 	padding: 20px;
 	margin-top: 8px;
 	display: grid;
@@ -253,7 +253,13 @@ article a {
 
 @media (max-width: 1200px) {
 	main {
+		height: unset;
 		grid-template-columns: 1fr !important;
+		padding: 20px 30px;
+	}
+	section:nth-child(odd):last-child {
+		grid-column: unset;
+		padding: unset;
 	}
 }
 
